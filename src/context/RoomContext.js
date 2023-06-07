@@ -15,7 +15,11 @@ function RoomProvider({ children }) {
 
   const handleClick = (e) => {
     e.preventDefault();
-    console.log(total);
+    //filter rooms based on total (person)
+    const newRooms = rooms.filter((room) => {
+      return total <= room.maxPerson;
+    });
+    setRooms(newRooms);
   };
 
   useEffect(() => {
