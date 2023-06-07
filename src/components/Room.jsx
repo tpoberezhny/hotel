@@ -24,7 +24,7 @@ function Room({ room }) {
           alt="Image of the room"
         />
       </div>
-      <div className="bg-white shadow-lg max-w-[300px] mx-auto h-[60px] -translate-y-1/2 flex justify-center items-center uppercase font-tartiary tracking-[1px] text-base">
+      <div className="bg-white shadow-lg max-w-[300px] mx-auto h-[60px] -translate-y-1/2 flex justify-center items-center uppercase font-tartiary tracking-[1px] text-base rounded-xl">
         <div className="flex justify-between w-[90%]">
           <div className="flex items-center gap-x-2">
             <div className="text-accent">
@@ -50,9 +50,14 @@ function Room({ room }) {
         <Link to={`/room/${id}`}>
           <h3 className="font-normal mb-5">{name}</h3>
         </Link>
-        <p className="max-w-[300px] mx-auto mb-3 lg:mb-6 text-[15px]">{description.slice(0, 56)}</p>
+        <p className="max-w-[300px] mx-auto mb-3 lg:mb-6 text-[15px]">
+          {description.slice(0, 56)}
+        </p>
       </div>
-      <Link to={`/room/${id}`} className="btn btn-secondary btn-sm">
+      <Link
+        to={`/room/${id}`}
+        className="btn btn-secondary btn-sm max-w-[240px] mx-auto rounded-xl"
+      >
         Book now from ${price}
       </Link>
     </div>

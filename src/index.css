@@ -7,7 +7,7 @@
     @apply tracking-wide;
   }
   .btn {
-    @apply text-[15px] tracking-[3px] uppercase text-white flex-1 transition-all px-8 flex justify-center items-center;
+    @apply text-[15px] tracking-[1px] uppercase text-white flex-1 transition-all px-8 flex justify-center items-center;
   }
   .btn-sm {
     @apply h-[48px];

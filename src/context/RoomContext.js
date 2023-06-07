@@ -4,7 +4,19 @@ import axios from "axios";
 export const RoomContext = createContext();
 
 function RoomProvider({ children }) {
-  const [ rooms, setRooms ] = useState([]);
+  const [rooms, setRooms] = useState([]);
+  const [adults, setAdults] = useState("1 Adult");
+  const [kids, setKids] = useState("0 Kids");
+  const [total, setTotal] = useState(0);
+
+  useEffect(() => {
+    setTotal(Number(adults[0]) + Number(kids[0]));
+  });
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    console.log(total);
+  };
 
   useEffect(() => {
     axios
@@ -13,9 +25,11 @@ function RoomProvider({ children }) {
         setRooms(res.data);
       });
   }, []);
-  
+
   return (
-    <RoomContext.Provider value={{rooms, setRooms}}>
+    <RoomContext.Provider
+      value={{ rooms, setRooms, adults, setAdults, kids, setKids, handleClick }}
+    >
       {children}
     </RoomContext.Provider>
   );
