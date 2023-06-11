@@ -8,27 +8,26 @@ import CheckOut from "../components/CheckOut";
 
 import { RoomContext } from "../context/RoomContext";
 
-import { FaCheck } from "react-icons/fa";
-import {
-  FaWifi,
-  FaCoffee,
-  FaBath,
-  FaParking,
-  FaSwimmingPool,
-  FaHotdog,
-  FaStopwatch,
-  FaCocktail,
-} from "react-icons/fa";
+import * as ReactIcons from "react-icons/fa";
+import { GiExitDoor } from "react-icons/gi";
 
 function RoomDetailes() {
   const { globalRooms } = useContext(RoomContext);
   const { id } = useParams();
 
+  const icons = {
+    "<FaWifi />": <ReactIcons.FaWifi />,
+    "<FaCoffee />": <ReactIcons.FaCoffee />,
+    "<FaBath />": <ReactIcons.FaBath />,
+    "<FaParking />": <ReactIcons.FaParking />,
+    "<FaHotdog />": <ReactIcons.FaHotdog />,
+    "<FaStopwatch />": <ReactIcons.FaStopwatch />,
+    "<FaCocktail />": <ReactIcons.FaCocktail />,
+  };
+
   const room = globalRooms.find((room) => {
     return room.id === Number(id);
   });
-
-  console.log(room);
 
   const { name, description, facilities, imageLg, price } = room;
 
@@ -41,23 +40,29 @@ function RoomDetailes() {
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row h-full py-24">
           {/* left side*/}
-          <div className="w-full h-full lg:w-[60%] px-6">
+          <div className="w-full h-full lg:w-[60%] lg:pr-24">
             <h2 className="text-5xl mb-5">{name}</h2>
-            <p className="mb-5">{description}</p>
+            <p className="mb-5 text-base">{description}</p>
             <img className="rounded-xl mb-5" src={imageLg} />
             <div className="mt-12">
-              <h3 className="mb-3">Room Facilities</h3>
-              <p className="mb-12">
+              <h3 className="mb-3 text-3xl">Room Facilities</h3>
+              <p className="mb-12 text-base">
                 Lorem ipsum, dolor sit amet consectetur adipisicing elit.
                 Laboriosam provident sunt enim neque esse, temporibus tempora
                 maiores reprehenderit quibusdam illo.
               </p>
-              <div>
+              <div className="grid lg:grid-cols-3 grid-cols-2 gap-8 mb-10">
                 {facilities.map((item, index) => {
                   //destructur items
-                  const { name, icon } = item;
+                  const { name } = item;
                   return (
-                    <div key={index}>
+                    <div
+                      className="flex items-center lg:gap-x-3 gap-x-1 flex-1"
+                      key={index}
+                    >
+                      <div className="text-3xl text-accent">
+                        {icons[item.icon]}
+                      </div>
                       <div>{name}</div>
                     </div>
                   );
@@ -67,8 +72,51 @@ function RoomDetailes() {
           </div>
           {/* right side*/}
           <div className="w-full h-full lg:w-[40%]">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-            quisquam est explicabo quas, porro dignissimos.
+            <div className="py-8 px-6 bg-accent/20 mb-12">
+              <div className="flex flex-col space-y-6 mb-4 items-center">
+                <h3>Your reservation</h3>
+                <div className="h-[60px] w-full">
+                  <CheckIn />
+                </div>
+                <div className="h-[60px] w-full">
+                  <CheckOut />
+                </div>
+                <div className="h-[60px] w-full">
+                  <AdultsDropdown />
+                </div>
+                <div className="h-[60px] w-full">
+                  <KidsDropdown />
+                </div>
+              </div>
+              <button className="btn btn-lg btn-primary w-full mt-8">
+                Book now for ${price}
+              </button>
+            </div>
+            <div>
+              <h3 className="text-3xl mb-6">Hotel Rules</h3>
+              <p className="mb-6 text-base">
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
+                delectus enim fugiat veniam voluptatum fugit.
+              </p>
+              <ul className="flex flex-col gap-y-4">
+                <li className="flex items-center gap-x-4">
+                  <ReactIcons.FaCheck className="text-accent" />
+                  Check-in: 3:00 PM - 9:00 PM
+                </li>
+                <li className="flex items-center gap-x-4">
+                  <GiExitDoor className="text-accent" />
+                  Check-out: 10:30 AM
+                </li>
+                <li className="flex items-center gap-x-4">
+                  <ReactIcons.FaDog className="text-accent" />
+                  Pets Friendly
+                </li>
+                <li className="flex items-center gap-x-4">
+                  <ReactIcons.FaSmokingBan className="text-accent" />
+                  No Smoking
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
