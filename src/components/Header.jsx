@@ -18,9 +18,9 @@ function Header() {
       <div className="container mx-auto flex flex-col items-center gap-y-3 lg:flex-row lg:justify-between lg:gap-y-0">
         <a href="/">
           {header ? (
-            <img className="lg:w-[70px] w-[40px]" src="../../image/logo1.svg" />
+            <img className="lg:w-[70px] w-[40px]" src="../../image/logo1.svg" alt="Logo"/>
           ) : (
-            <img className="lg:w-[70px] w-[40px]" src="../../image/logo2.svg" />
+            <img className="lg:w-[70px] w-[40px]" src="../../image/logo2.svg" alt="Logo" />
           )}
         </a>
         <nav

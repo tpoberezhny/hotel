@@ -13,10 +13,13 @@ function Rooms() {
     <div className="py-24">
       {loading && (
         <div className="h-screen fixed bottom-0 top-0 bg-black/90 w-full z-50 flex justify-center items-cemter">
-          <SpinnerDotted thickness={100} color="rgba(163, 125, 50, 1)"/>
+          <SpinnerDotted thickness={100} color="rgba(163, 125, 50, 1)" />
         </div>
       )}
       <div className="container mx-auto lg:px-0">
+        <div className="text-center mb-10">
+          <div className="uppercase tracking-[5px] text-3xl"> Our comfortable rooms</div>
+        </div>
         <div className="grid grid-cols-1 max-w-sm mx-auto gap-[30px] lg:grid-cols-3 lg:max-w-none lg:mx-0">
           {rooms.map((room) => {
             return <Room room={room} key={room.id} />;

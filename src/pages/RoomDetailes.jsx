@@ -10,6 +10,7 @@ import { RoomContext } from "../context/RoomContext";
 
 import * as ReactIcons from "react-icons/fa";
 import { GiExitDoor } from "react-icons/gi";
+import ScrollToTop from "../components/ScrollToTop";
 
 function RoomDetailes() {
   const { globalRooms } = useContext(RoomContext);
@@ -33,6 +34,7 @@ function RoomDetailes() {
 
   return (
     <section>
+      <ScrollToTop />
       <div className="bg-room bg-cover bg-center h-[560px] relative flex justify-center items-center">
         <div className="absolute w-full h-full bg-black/70"></div>
         <h1 className="text-6xl text-white z-20 text-center">{name} Details</h1>
@@ -43,13 +45,16 @@ function RoomDetailes() {
           <div className="w-full h-full lg:w-[60%] lg:pr-24">
             <h2 className="text-5xl mb-5">{name}</h2>
             <p className="mb-5 text-base">{description}</p>
-            <img className="rounded-xl mb-5" src={imageLg} />
+            <img className="rounded-xl mb-5" src={imageLg} alt="Room" />
             <div className="mt-12">
               <h3 className="mb-3 text-3xl">Room Facilities</h3>
               <p className="mb-12 text-base">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit.
-                Laboriosam provident sunt enim neque esse, temporibus tempora
-                maiores reprehenderit quibusdam illo.
+                Our Room Facilities ensure a seamless and comfortable stay. Stay
+                connected with complimentary Wi-Fi in every room. Enjoy the
+                convenience of a coffee machine or minibar for refreshments.
+                Explore the comprehensive list of additional amenities provided
+                in each room below for an exceptional experience during your
+                stay.
               </p>
               <div className="grid lg:grid-cols-3 grid-cols-2 gap-8 mb-10">
                 {facilities.map((item, index) => {
@@ -95,8 +100,10 @@ function RoomDetailes() {
             <div>
               <h3 className="text-3xl mb-6">Hotel Rules</h3>
               <p className="mb-6 text-base">
-                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro
-                delectus enim fugiat veniam voluptatum fugit.
+                Please refer to the list below for all our hotel policies,
+                including check-in and check-out times. We kindly ask our guests
+                to familiarize themselves with these guidelines to ensure a
+                pleasant and smooth stay.
               </p>
               <ul className="flex flex-col gap-y-4">
                 <li className="flex items-center gap-x-4">

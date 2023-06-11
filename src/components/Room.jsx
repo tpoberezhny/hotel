@@ -8,11 +8,13 @@ function Room({ room }) {
   return (
     <div className="bg-white shadow-2xl min-h-[500px] group rounded-xl">
       <div className="overflow-hidden">
-        <img
-          className="group-hover:scale-110 transition-all duration-300 w-full"
-          src={image}
-          alt="Image of the room"
-        />
+        <Link to={`/room/${id}`}>
+          <img
+            className="group-hover:scale-110 transition-all duration-300 w-full cursor-pointer"
+            src={image}
+            alt="Room"
+          />
+        </Link>
       </div>
       <div className="bg-white shadow-lg max-w-[300px] mx-auto h-[60px] -translate-y-1/2 flex justify-center items-center uppercase font-tartiary tracking-[1px] text-base rounded-xl">
         <div className="flex justify-between w-[90%]">
@@ -40,13 +42,18 @@ function Room({ room }) {
         <Link to={`/room/${id}`}>
           <h3 className="font-normal mb-5">{name}</h3>
         </Link>
-        <p className="max-w-[300px] mx-auto mb-3 lg:mb-6 text-[15px]">
-          {description.slice(0, 56)}
-        </p>
+        <div>
+          <p className="max-w-[300px] mx-auto mb-3 lg:mb-5 text-[15px]">
+            {description.slice(0, 70)}..
+          </p>
+          <Link to={`/room/${id}`}>
+            <p className="underline my-4">See more about the room</p>
+          </Link>
+        </div>
       </div>
       <Link
         to={`/room/${id}`}
-        className="btn btn-secondary btn-sm max-w-[240px] mx-auto rounded-xl"
+        className="btn btn-secondary btn-sm max-w-[240px] mx-auto rounded-xl mb-7"
       >
         Book now from ${price}
       </Link>

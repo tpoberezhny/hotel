@@ -29,12 +29,21 @@ function RoomProvider({ children }) {
   };
 
   useEffect(() => {
-    axios
-      .get("https://647bbfa9c0bae2880ad03a9e.mockapi.io/rooms")
-      .then((res) => {
-        setGlobalRooms(res.data);
-        setRooms(res.data);
-      });
+    async function fetchData() {
+      try {
+        const roomResponce = await axios.get(
+          "https://647bbfa9c0bae2880ad03a9e.mockapi.io/rooms"
+        );
+
+        setGlobalRooms(roomResponce.data);
+        setRooms(roomResponce.data);
+      } catch (error) {
+        alert("Data request error ;(");
+        console.error(error);
+      }
+    }
+
+    fetchData();
   }, []);
 
   return (

@@ -63,7 +63,7 @@ function HeroSlider() {
               <img
                 className="object-cover h-full w-full"
                 src={bg}
-                alt="Image of the room"
+                alt="Room"
               />
             </div>
             <div className="absolute w-full h-full bg-black/70"></div>
