@@ -2,16 +2,6 @@ import React from "react";
 
 import { Link } from "react-router-dom";
 import { BsArrowsFullscreen, BsPeople } from "react-icons/bs";
-import {
-  FaWifi,
-  FaCoffee,
-  FaBath,
-  FaParking,
-  FaSwimmingPool,
-  FaHotdog,
-  FaStopwatch,
-  FaCocktail,
-} from "react-icons/fa";
 
 function Room({ room }) {
   const { id, name, image, size, maxPerson, description, price } = room;
