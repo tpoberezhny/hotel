@@ -32,7 +32,7 @@ function RoomProvider({ children }) {
     async function fetchData() {
       try {
         const roomResponce = await axios.get(
-          "https://647bbfa9c0bae2880ad03a9e.mockapi.io/rooms"
+          "https://65fdc1c0b2a18489b3856218.mockapi.io/api/tima/rooms"
         );
 
         setGlobalRooms(roomResponce.data);
